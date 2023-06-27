@@ -1,0 +1,32 @@
+.card-image {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.description-container {
+  flex: 1;
+}
+
+.image-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.description {
+  word-break: break-word;
+}
+
+@media (min-width: 768px) {
+  .card-image {
+    width: 120px;
+    height: 120px;
+    margin-left: 30px;
+  }
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
