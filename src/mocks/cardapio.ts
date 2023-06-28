@@ -229,13 +229,6 @@ const menu = [
   },
   {
     categoria: 'PORÇÕES',
-    titulo: 'Bolinho de Costela Defumada',
-    descricao: '7 bolinhos de costela suína, recheado com bacon e calabresa defumada e tempero da casa. 1 tigelinha de molho da casa.',
-    preco: 39.90,
-    imagem: bolinhoCostelaDefumada,
-  },
-  {
-    categoria: 'PORÇÕES',
     titulo: 'Bolinho de Bacalhau',
     descricao: '8 bolinhos de bacalhau',
     preco: 35.00,
@@ -243,8 +236,15 @@ const menu = [
   },
   {
     categoria: 'PORÇÕES',
+    titulo: 'Bolinho de Costela Defumada',
+    descricao: '7 bolinhos de costela suína, recheado com bacon e calabresa defumada e tempero da casa. 1 tigelinha de molho da casa.',
+    preco: 39.90,
+    imagem: bolinhoCostelaDefumada,
+  },
+  {
+    categoria: 'PORÇÕES',
     titulo: 'Frango na Panko com fritas, cheddar e bacon',
-    descricao: '350g peito de frango em cubos 350g batata palito bacon, cheddar e molho da casa.',
+    descricao: '350g de peito de frango em cubos, 350g de batata palito bacon, cheddar e molho da casa.',
     preco: 65.00,
     imagem: frangoPanko,
   },

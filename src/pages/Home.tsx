@@ -1,10 +1,11 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 import categories from '../utils/navigate';
 import cardapio from '../mocks/cardapio';
 import { TextField } from '@mui/material';
 import inputTheme from '../themes/input';
 import MenuInterface from '../interface/menu';
+import ProductPopup from '../components/Pop-up';
 import '../App.css';
 
 const App: React.FC = () => {
@@ -13,7 +14,33 @@ const App: React.FC = () => {
   const [filteredCardapio, setFilteredCardapio] = useState<MenuInterface[]>([]);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const [notFoundMessage, setNotFoundMessage] = useState<boolean>(false);
+  const [selectedProduct, setSelectedProduct] = useState<MenuInterface | null>(null);
+  const [showPopUp, setShowPopUp] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (showPopUp) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   
+  }, [showPopUp]);
+
+  const handleClose = () => {
+    setShowPopUp(false);
+    document.body.style.overflow = 'auto';
+  };
+
+  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>): void => {
+    if (event.target === event.currentTarget) {
+      handleClose();
+    }
+  };
+
+  const handleProductClick = (product: MenuInterface) => {
+    setSelectedProduct(product);
+    setShowPopUp(true);
+  };
 
   const handleCategoryClick = (category: string) => {
     if (selectedCategory === category) {
@@ -26,6 +53,7 @@ const App: React.FC = () => {
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (userSearch.length < 3) {
+      setNotFoundMessage(false);
       setErrorMessage(true);
       return;
     }
@@ -40,13 +68,14 @@ const App: React.FC = () => {
       setNotFoundMessage(true);
       return;
     }
+    setErrorMessage(false);
     setNotFoundMessage(false);
     setFilteredCardapio(filteredItems);
   };
 
   return (
     <div className="flex flex-col bg-gray-50 min-h-screen">
-      <form className="flex justify-center m-3 mb-10" onSubmit={handleSearch}>
+      <form className="flex justify-center m-3 mb-14" onSubmit={handleSearch}>
         <TextField
           type="text"
           placeholder="Produto ou Categoria"
@@ -85,15 +114,28 @@ const App: React.FC = () => {
       </form>
 
       { errorMessage && (
-        <div className='flex justify-center mb-10 text-red-500'>
-          <p>Insira pelo menos 3 caracteres para realizar a pesquisa.</p>
+        <div className='flex justify-center mb-10 px-2 text-center text-sm md:text-md lg:text-lg text-red-500'>
+          <p>Insira pelo menos 3 caracteres para realizar a busca.</p>
         </div>
       )}
 
       { notFoundMessage && (
-        <div className='flex justify-center mb-10 text-red-500'>
+        <div className='px-4 flex justify-center mb-10 text-sm md:text-md lg:text-lg text-red-500'>
           <p>Nenhum produto encontrado.</p>
         </div>
+      )}
+
+      { showPopUp && selectedProduct && (
+        <section className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-10">
+          <div
+            className="fixed top-0 left-0 w-full h-full bg-black opacity-60 z-0"
+            onClick={handleBackdropClick}
+          >
+          </div>
+          <div className="flex items-center justify-center message-box z-10">
+            <ProductPopup product={selectedProduct} onClose={handleClose} />
+          </div>
+        </section>
       )}
 
       <div className="flex flex-col w-full">
@@ -121,7 +163,7 @@ const App: React.FC = () => {
               cardapio
                 .filter((item) => item.categoria === categoria)
                 .map((item, itemIndex) => (
-                  <div key={itemIndex} className="flex align-center justify-between bg-gray-50 mb-8 cursor-pointer hover:bg-gray-100 rounded-xl text-justify px-2 shadow-md">
+                  <div key={itemIndex} className="flex align-center justify-between bg-gray-50 mb-8 cursor-pointer hover:bg-gray-100 rounded-xl text-justify px-2 shadow-md" onClick={() => handleProductClick(item)}>
                     <div className="flex flex-col justify-center">
                       <h3 className="text-md font-bold mb-2" id={item.titulo}>{item.titulo}</h3>
                       <div className="description-container my-2 mr-2">
@@ -149,29 +191,29 @@ const App: React.FC = () => {
         ))):(
           filteredCardapio
             .map((item, itemIndex) => (
-              <div key={itemIndex} className="flex align-center justify-between bg-gray-50 mb-8 cursor-pointer hover:bg-gray-100 rounded-2xl text-justify">
-              <div className="flex flex-col justify-center">
-                <h3 className="text-lg font-bold">{item.titulo}</h3>
-                <div className="description-container">
-                  <p className="text-gray-600 description">
-                    {item.descricao.length > 55
-                      ? `${item.descricao.substring(0, 53)}...`
-                      : item.descricao
-                    }
+              <div key={itemIndex} className="flex align-center justify-between sm:w-3/4 sm:mx-auto bg-gray-50 mb-8 cursor-pointer hover:bg-gray-100 rounded-xl text-justify px-2 shadow-md" onClick={() => handleProductClick(item)}>
+                <div className="flex flex-col justify-center">
+                  <h3 className="text-md font-bold mb-2" id={item.titulo}>{item.titulo}</h3>
+                  <div className="description-container my-2 mr-2">
+                    <p className="text-gray-600 text-sm description">
+                      {item.descricao.length > 60
+                        ? `${item.descricao.substring(0, 80)}...`
+                        : item.descricao
+                      }
+                    </p>
+                  </div>
+                  <p className="font-barlow py-5">
+                    {item.preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
                   </p>
                 </div>
-                <p className="font-bold">
-                  {item.preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-                </p>
+                <div className="image-container">
+                  <img
+                    src={item.imagem}
+                    alt={item.titulo}
+                    className="rounded-full object-contain custom-round card-image"
+                  />
+                </div>
               </div>
-              <div className="image-container">
-                <img
-                  src={item.imagem}
-                  alt={item.titulo}
-                  className="rounded-full object-contain custom-round card-image"
-                />
-              </div>
-            </div>
             ))
           )
         }
