@@ -16,6 +16,7 @@ import ginDharmaDrink from '../assets/drinks/gin-dharma.jpeg';
 import caipvodkaDrink from '../assets/drinks/caipvodka.jpeg';
 import caipirinhaDrink from '../assets/drinks/caipirinha.jpeg';
 import bhudaEspecialDrink from '../assets/drinks/bhuda-especial.jpeg';
+import batataPalito from '../assets/porcoes/batata-palito-cheddar-bacon.jpg';
 import bolinhoCostelaDefumada from '../assets/porcoes/bolinho-costela.jpeg';
 import bolinhoBacalhau from '../assets/porcoes/bolinho-bacalhau.jpeg';
 import frangoPanko from '../assets/porcoes/frango-panko.jpeg';
@@ -226,6 +227,13 @@ const menu = [
     descricao: 'Theros, xarope artesanal de morango com amora, limão, chá preto de frutas vermelhas e água tônica finalizado com espuma de de morango com amora.',
     preco: 35.00,
     imagem: bhudaEspecialDrink,
+  },
+  {
+    categoria: 'PORÇÕES',
+    titulo: 'Batata Palito com Cheddar e Bacon',
+    descricao: '400g de batata palito, bacon e queijo cheddar',
+    preco: 39.90,
+    imagem: batataPalito,
   },
   {
     categoria: 'PORÇÕES',

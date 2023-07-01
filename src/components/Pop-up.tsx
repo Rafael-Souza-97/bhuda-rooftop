@@ -5,17 +5,13 @@ import '../App.css'
 
 const ProductPopup: React.FC<ProductPopupProps> = ({ product, onClose }) => {
   return (
-    <div className="fixed inset-0 flex justify-center items-center z-50 bg-gray-800 bg-opacity-50">
-      <div className="bg-white p-6 mx-4 rounded-lg shadow-xl relative">
+    <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50">
+      <div className="bg-white p-6 mx-4 rounded-lg shadow-xl relative mt-14">
         <button className="absolute top-2 right-2 text-gray-500 hover:text-gray-800" onClick={onClose}>
-          <FiX className="mb-2 text-primary" size={24} />
+          <FiX className="mb-2 text-primary" size={26} />
         </button>
 
-        <h2 className="text-xl font-bold text-center mb-4">{product.titulo}</h2>
-{/* 
-        <div className="flex justify-center my-4">
-          <img src={product.imagem} alt={product.titulo} className="w-64 object-contain rounded-lg" />
-        </div> */}
+        <h2 className="text-xl font-bold text-center my-4">{product.titulo}</h2>
 
         <div className="flex justify-center my-4">
           <img

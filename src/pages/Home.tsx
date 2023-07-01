@@ -163,9 +163,9 @@ const App: React.FC = () => {
               cardapio
                 .filter((item) => item.categoria === categoria)
                 .map((item, itemIndex) => (
-                  <div key={itemIndex} className="flex align-center justify-between bg-gray-50 mb-8 cursor-pointer hover:bg-gray-100 rounded-xl text-justify px-2 shadow-md" onClick={() => handleProductClick(item)}>
+                  <div key={itemIndex} className="flex align-center justify-between bg-gray-50 mb-8 cursor-pointer hover:bg-gray-100 rounded-xl text-justify px-2 mt-2 shadow-md" onClick={() => handleProductClick(item)}>
                     <div className="flex flex-col justify-center">
-                      <h3 className="text-md font-bold mb-2" id={item.titulo}>{item.titulo}</h3>
+                      <h3 className="text-sm md:text-md font-bold mb-2" id={item.titulo}>{item.titulo}</h3>
                       <div className="description-container my-2 mr-2">
                         <p className="text-gray-600 text-sm description">
                           {item.descricao.length > 60
