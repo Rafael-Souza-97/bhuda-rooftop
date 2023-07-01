@@ -126,7 +126,7 @@ const App: React.FC = () => {
       )}
 
       { showPopUp && selectedProduct && (
-        <section className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-10">
+        <section className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-10 outline-none">
           <div
             className="fixed top-0 left-0 w-full h-full bg-black opacity-60 z-0"
             onClick={handleBackdropClick}
@@ -138,16 +138,16 @@ const App: React.FC = () => {
         </section>
       )}
 
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full outline-none">
         {filteredCardapio.length === 0 ? (
           categories.map(({ categoria }, index) => (
           <section
             key={index}
             id={categoria}
-            className="flex flex-col pt-3 pb-0 px-3 rounded-lg mb-4 w-full sm:w-3/4 sm:mx-auto shadow-sm bg-white"
+            className="flex flex-col pt-3 pb-0 px-3 rounded-lg mb-4 w-full sm:w-3/4 sm:mx-auto shadow-sm bg-white outline-none"
           >
             <h2
-              className="text-md font-bold mb-4 flex items-center align-center cursor-pointer relative"
+              className="text-md font-bold mb-4 flex items-center align-center cursor-pointer relative outline-none"
               onClick={() => handleCategoryClick(categoria)}
             >
               {categoria}
