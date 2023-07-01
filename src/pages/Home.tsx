@@ -75,7 +75,7 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col bg-gray-50 min-h-screen">
-      <form className="flex justify-center m-3 mb-14" onSubmit={handleSearch}>
+      <form className="flex justify-center m-3 mb-12" onSubmit={handleSearch}>
         <TextField
           type="text"
           placeholder="Produto ou Categoria"
@@ -115,7 +115,7 @@ const App: React.FC = () => {
 
       { errorMessage && (
         <div className='flex justify-center mb-10 px-2 text-center text-sm md:text-md lg:text-lg text-red-500'>
-          <p>Insira pelo menos 3 caracteres para realizar a busca.</p>
+          <p>Digite <span className='font-barlow'>3</span> ou mais caracteres para iniciar a busca.</p>
         </div>
       )}
 
@@ -163,9 +163,9 @@ const App: React.FC = () => {
               cardapio
                 .filter((item) => item.categoria === categoria)
                 .map((item, itemIndex) => (
-                  <div key={itemIndex} className="flex align-center justify-between bg-gray-50 mb-8 cursor-pointer hover:bg-gray-100 rounded-xl text-justify px-2 mt-2 shadow-md" onClick={() => handleProductClick(item)}>
+                  <div key={itemIndex} className="flex align-center justify-between bg-gray-50 mb-8 cursor-pointer hover:bg-gray-100 rounded-xl text-justify px-3 mt-1 shadow-md" onClick={() => handleProductClick(item)}>
                     <div className="flex flex-col justify-center">
-                      <h3 className="text-sm md:text-md font-bold mb-2" id={item.titulo}>{item.titulo}</h3>
+                      <h3 className="text-sm md:text-md font-bold my-2" id={item.titulo}>{item.titulo}</h3>
                       <div className="description-container my-2 mr-2">
                         <p className="text-gray-600 text-sm description">
                           {item.descricao.length > 60
