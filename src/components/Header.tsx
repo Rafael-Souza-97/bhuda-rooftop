@@ -60,9 +60,9 @@ function Header() {
           </li>
 
           <li className="flex flex-col text-center mt-80 cursor-pointer text-2xl">
-            <a href="https://www.google.com/search?hl=pt-BR&gl=br&q=Rooftop+Bhuda+-+Av.+Prof.+Manoel+Martins,+491+-+11%C2%B0+andar+-+Campo+Alegre,+Conselheiro+Lafaiete+-+MG,+36400-110&ludocid=7478476265962902602&lsig=AB86z5VhbqXTMT6tSF9k0RCqmOks#lrd=0xa3df63915e7d2d:0x67c8e28a8de8944a,1,,,," target="_blank" rel="noopener noreferrer" className="mb-3 hover:text-primary">
+            {/* <a href="https://www.google.com/search?hl=pt-BR&gl=br&q=Rooftop+Bhuda+-+Av.+Prof.+Manoel+Martins,+491+-+11%C2%B0+andar+-+Campo+Alegre,+Conselheiro+Lafaiete+-+MG,+36400-110&ludocid=7478476265962902602&lsig=AB86z5VhbqXTMT6tSF9k0RCqmOks#lrd=0xa3df63915e7d2d:0x67c8e28a8de8944a,1,,,," target="_blank" rel="noopener noreferrer" className="mb-3 hover:text-primary">
               Nossas Avaliações
-            </a>
+            </a> */}
 
             <a href="https://search.google.com/local/writereview?placeid=ChIJLX1ekWPfowARSpTojYriyGc" target="_blank" rel="noopener noreferrer" className="my-4 hover:text-primary">
               Nos avalie

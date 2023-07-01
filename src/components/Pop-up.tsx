@@ -17,7 +17,7 @@ const ProductPopup: React.FC<ProductPopupProps> = ({ product, onClose }) => {
           <img
             src={product.imagem}
             alt={product.titulo}
-            className="object-contain custom-round w-80 rounded-lg max-h-80"
+            className="object-contain custom-round w-80 rounded-xl max-h-80"
           />
         </div>
 

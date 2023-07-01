@@ -144,14 +144,14 @@ const App: React.FC = () => {
           <section
             key={index}
             id={categoria}
-            className="flex flex-col pt-3 pb-0 px-1 rounded-lg mb-4 w-full sm:w-3/4 sm:mx-auto shadow-sm bg-white"
+            className="flex flex-col pt-3 pb-0 px-3 rounded-lg mb-4 w-full sm:w-3/4 sm:mx-auto shadow-sm bg-white"
           >
             <h2
-              className="text-md font-bold mb-4 flex items-center cursor-pointer relative"
+              className="text-md font-bold mb-4 flex items-center align-center cursor-pointer relative"
               onClick={() => handleCategoryClick(categoria)}
             >
               {categoria}
-              <span className="absolute  right-0 top-1/2 transform-translate-y-1/2">
+              <span className="absolute right-0 top-1 items-center align-center transform-translate-y-1/2">
                 {selectedCategory === categoria ? (
                   <IoIosArrowUp className="text-primary" />
                 ) : (
